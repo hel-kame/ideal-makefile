@@ -7,7 +7,7 @@ BIN_DIR = ./bin/ #BINARY_DIRECTORY
 SRC =	$(SRC_DIR)/#FILE					\
 		$(SRC_DIR)/#FILE					\
 
-CC = gcc
+CC = #C_COMPILER
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(BIN_DIR)%.o)
 
@@ -17,11 +17,11 @@ LIB = -Llibft -lft
 
 INCLUDES = ./includes
 
-CFLAGS = -Werror -Wextra -Wall -I$(INCLUDES) -g3
+CFLAGS = -I$(INCLUDES)
 
-all :	$(BIN_DIR) $(NAME)
+all :	$(NAME)
 
-$(OBJ) :	$(BIN_DIR)%.o: $(SRC_DIR)/%.c
+$(BIN_DIR)%.o : $(SRC_DIR)/%.c
 		@ $(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) :	$(BIN_DIR) $(OBJ)
